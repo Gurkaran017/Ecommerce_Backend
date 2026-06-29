@@ -4,7 +4,7 @@ const { Client } = pkg;
 const database = new Client({
   user: "postgres",
   host: "localhost",
-  database: "pern_ecommerce",
+  database: "pern_ecommerce_store",
   password: "5957",
   port: 5432,
 });
