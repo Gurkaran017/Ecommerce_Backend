@@ -503,8 +503,6 @@ export const fetchAIFilteredProducts = catchAsyncErrors(
 
     // STEP 2: AI FILTERING
     const { success, products } = await getAIRecommendation(
-      req,
-      res,
       userPrompt,
       filteredProducts
     );
