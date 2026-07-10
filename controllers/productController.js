@@ -39,7 +39,7 @@ export const createProduct = catchAsyncErrors(async (req, res, next) => {
     [
       name,
       description,
-      price / 283,
+      price,
       category,
       stock,
       JSON.stringify(uploadedImages),
@@ -68,7 +68,7 @@ export const fetchAllProducts = catchAsyncErrors(async (req, res, next) => {
 
   // Filter products by availability
   if (availability === "in-stock") {
-    conditions.push(`stock > 5`);
+    conditions.push(`stock > 1`);
   } else if (availability === "limited") {
     conditions.push(`stock > 0 AND stock <= 5`);
   } else if (availability === "out-of-stock") {
@@ -195,7 +195,7 @@ export const updateProduct = catchAsyncErrors(async (req, res, next) => {
   }
   const result = await database.query(
     `UPDATE products SET name = $1, description = $2, price = $3, category = $4, stock = $5 WHERE id = $6 RETURNING *`,
-    [name, description, price / 283, category, stock, productId]
+    [name, description, price, category, stock, productId]
   );
   res.status(200).json({
     success: true,
